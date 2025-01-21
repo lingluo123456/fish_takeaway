@@ -1,5 +1,6 @@
 package com.sky.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,10 +29,10 @@ public class Category implements Serializable {
 
     //分类状态 0标识禁用 1表示启用
     private Integer status;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //创建时间
     private LocalDateTime createTime;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //更新时间
     private LocalDateTime updateTime;
 

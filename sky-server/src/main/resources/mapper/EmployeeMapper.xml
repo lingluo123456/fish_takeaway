@@ -2,4 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sky.mapper.EmployeeMapper">
+    <insert id="add">
+        INSERT INTO employee (username, name, password, phone, sex, id_number, status, create_time, update_time, create_user, update_user)
+        VALUES (#{username}, #{name}, #{password}, #{phone}, #{sex}, #{idNumber}, #{status}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
+    </insert>
+    <update id="update">
+        UPDATE employee
+        <set>
+            <if test="username != null and username!=''">username = #{username},</if>
+            <if test="name != null and username!=''">name = #{name},</if>
+            <if test="phone != null and username!=''">phone = #{phone},</if>
+            <if test="sex != null and username!=''">sex = #{sex},</if>
+            <if test="idNumber != null and username!=''">id_number = #{idNumber},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null and username!=''">update_time = #{updateTime},</if>
+        </set> where id = #{id}
+    </update>
+    <select id="page" resultType="com.sky.entity.Employee">
+        select * from employee
+        <where>
+            <if test="name != null and name != ''">
+                name like concat('%',#{name},'%')
+            </if>
+        </where> order by update_time desc
+    </select>
 </mapper>

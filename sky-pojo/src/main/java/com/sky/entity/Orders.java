@@ -1,5 +1,6 @@
 package com.sky.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -50,10 +51,10 @@ public class Orders implements Serializable {
 
     //地址id
     private Long addressBookId;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //下单时间
     private LocalDateTime orderTime;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //结账时间
     private LocalDateTime checkoutTime;
 
@@ -86,16 +87,16 @@ public class Orders implements Serializable {
 
     //订单拒绝原因
     private String rejectionReason;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //订单取消时间
     private LocalDateTime cancelTime;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //预计送达时间
     private LocalDateTime estimatedDeliveryTime;
 
     //配送状态  1立即送出  0选择具体时间
     private Integer deliveryStatus;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //送达时间
     private LocalDateTime deliveryTime;
 
