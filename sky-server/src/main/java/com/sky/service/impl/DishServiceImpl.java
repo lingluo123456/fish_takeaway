@@ -111,4 +111,9 @@ public class DishServiceImpl implements DishService {
         dish.setStatus(status);
         dishMapper.startOrStop(dish);
     }
+
+    @Override
+    public List<DishVO> list(Long categoryId) {
+        return dishMapper.list(categoryId);
+    }
 }

@@ -19,4 +19,6 @@ public interface DishService {
     void deleteByIds(List<Long> ids);
 
     void startOrStop(Integer status, Long id);
+
+    List<DishVO> list(Long categoryId);
 }

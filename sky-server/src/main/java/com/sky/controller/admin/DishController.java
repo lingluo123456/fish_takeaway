@@ -76,4 +76,10 @@ public class DishController {
         dishService.startOrStop(status,id);
         return Result.success();
     }
+    @GetMapping("/list")
+    public Result list(@RequestParam Long categoryId){
+        log.info("菜品起售停售");
+        List<DishVO> list = dishService.list(categoryId);
+        return Result.success(list);
+    }
 }
