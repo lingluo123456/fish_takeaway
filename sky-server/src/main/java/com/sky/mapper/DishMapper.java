@@ -1,7 +1,18 @@
 package com.sky.mapper;
 
+import com.sky.annotation.AutoFill;
+import com.sky.dto.DishDTO;
+import com.sky.dto.DishPageQueryDTO;
+import com.sky.entity.Dish;
+import com.sky.entity.DishFlavor;
+import com.sky.enumeration.OperationType;
+import com.sky.vo.DishVO;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
 public interface DishMapper {
@@ -14,4 +25,21 @@ public interface DishMapper {
     @Select("select count(id) from dish where category_id = #{categoryId}")
     Integer countByCategoryId(Long categoryId);
 
+    List<DishVO> page(DishPageQueryDTO dishPageQueryDTO);
+
+    @AutoFill(value = OperationType.INSERT)
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    void saveDish(Dish dish);
+
+
+    @Select("select d.*,c.name categoryName from dish d left outer join category c on d.category_id = c.id where d.id = #{id}")
+    DishVO getById(Long id);
+
+    @AutoFill(value = OperationType.UPDATE)
+    void update(Dish dish);
+
+    void deleteById(Long id);
+
+    @AutoFill(value = OperationType.UPDATE)
+    void startOrStop(Dish dish);
 }

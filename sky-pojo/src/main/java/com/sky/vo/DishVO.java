@@ -1,5 +1,6 @@
 package com.sky.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sky.entity.DishFlavor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,6 +31,7 @@ public class DishVO implements Serializable {
     private String description;
     //0 停售 1 起售
     private Integer status;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //更新时间
     private LocalDateTime updateTime;
     //分类名称
