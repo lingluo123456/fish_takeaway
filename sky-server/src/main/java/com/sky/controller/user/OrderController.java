@@ -12,10 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController("UserOrderController")
 @RequestMapping("/user/order")
 @Slf4j
-public class OderController {
+public class OrderController {
 
     @Autowired
     private OrderService orderService;
