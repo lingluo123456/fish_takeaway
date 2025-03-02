@@ -1,7 +1,9 @@
 package com.sky.mapper;
 
+import com.github.pagehelper.Page;
 import com.sky.annotation.AutoFill;
 import com.sky.dto.DishPageQueryDTO;
+import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.entity.Orders;
 import com.sky.enumeration.OperationType;
@@ -29,4 +31,9 @@ public interface OrderMapper {
      * @param orders
      */
     void update(Orders orders);
+
+    Page<Orders> page4User(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    @Select("select * from orders where id=#{id}")
+    Orders selectById(Long id);
 }
