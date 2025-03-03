@@ -8,6 +8,7 @@ import com.sky.entity.Dish;
 import com.sky.entity.Orders;
 import com.sky.enumeration.OperationType;
 import com.sky.vo.DishVO;
+import com.sky.vo.OrderStatisticsVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
@@ -36,4 +37,8 @@ public interface OrderMapper {
 
     @Select("select * from orders where id=#{id}")
     Orders selectById(Long id);
+
+    Page<Orders> page4Admin(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    Integer statistics(Integer status);
 }
